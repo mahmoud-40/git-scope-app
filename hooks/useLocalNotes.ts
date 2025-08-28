@@ -7,13 +7,13 @@ export type NoteTargetType = "user" | "repo";
 export type Note = {
   id: string;
   targetType: NoteTargetType;
-  targetKey: string; // user:mahmoud-40 or repo:mahmoud-40/git-scope-app
+  targetKey: string; 
   content: string;
   createdAt: number;
   updatedAt: number;
 };
 
-type NotesState = Record<string, Note>; // id -> note
+type NotesState = Record<string, Note>; 
 
 const STORAGE_KEY = "git-scope-notes";
 
