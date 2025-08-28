@@ -18,6 +18,10 @@ Live demo: [https://git-scope-app.vercel.app/](https://git-scope-app.vercel.app/
 - Notes
   - Add personal notes for a user or a specific repository
   - Notes are saved locally and surface automatically on revisit ("Saved Notes")
+ 
+## Video Demo
+
+https://github.com/user-attachments/assets/71542acc-9947-44ec-93c3-259de8f165f6
 
 ## Tech Stack
 
@@ -135,7 +139,7 @@ The app calls GitHub's public REST endpoints:
   1) Import the repository.
   2) Add OPENAI_API_KEY (optional) in Project Settings → Environment Variables.
   3) Deploy.
-
+ 
 ## License
 
 No license specified.
