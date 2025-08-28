@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 
 import { getRepos, getUser, getRecentEvents, computeCommitActivityScore, computeTotalStars } from "@/lib/github";
@@ -46,8 +45,8 @@ export default function Home() {
     try {
       const [u, r, e] = await Promise.all([getUser(uname), getRepos(uname), getRecentEvents(uname)]);
       setState({ kind: "loaded", data: { user: u, repos: r, events: e } });
-    } catch (err: any) {
-      setState({ kind: "error", error: String(err?.message || err) });
+    } catch (err: unknown) {
+      setState({ kind: "error", error: String(err instanceof Error ? err.message : err) });
     }
   }
 
@@ -111,8 +110,8 @@ export default function Home() {
       
       const json = await res.json();
       setAiSummary(json.summary || "");
-    } catch (err: any) {
-      const errorMessage = err?.message || String(err);
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : String(err);
       setAiSummary(`Error: ${errorMessage}`);
     } finally {
       setAiLoading(false);
@@ -169,8 +168,8 @@ export default function Home() {
 
       const json = await res.json();
       setAiCompare(json.summary || "");
-    } catch (err: any) {
-      const errorMessage = err?.message || String(err);
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : String(err);
       setAiCompare(`Error: ${errorMessage}`);
     } finally {
       setAiCompareLoading(false);

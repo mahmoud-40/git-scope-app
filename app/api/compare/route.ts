@@ -118,8 +118,8 @@ Suggestions:
     const json = await res.json();
     const content: string = json?.choices?.[0]?.message?.content || "";
     return Response.json({ summary: content, via: "openai" });
-  } catch (err: any) {
-    return new Response(JSON.stringify({ error: `Network error: ${err?.message || String(err)}` }), {
+  } catch (err: unknown) {
+    return new Response(JSON.stringify({ error: `Network error: ${err instanceof Error ? err.message : String(err)}` }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
     });
