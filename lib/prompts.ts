@@ -67,20 +67,20 @@ export function buildComparePrompt(params: {
   const { a, b } = params;
   return `Compare two GitHub users using ONLY this snapshot.
 
-User A: @${a.username}
+User @${a.username}:
 Profile: name=${a.name || 'N/A'}, followers=${a.followers}, public_repos=${a.publicRepos}
 Repos: total_stars=${a.totalStars}, top_repos=${a.topReposList || 'N/A'}, top_languages=${a.topLanguages || 'N/A'}
 Activity: push_commits_30d=${a.commits30d}
 
-User B: @${b.username}
+User @${b.username}:
 Profile: name=${b.name || 'N/A'}, followers=${b.followers}, public_repos=${b.publicRepos}
 Repos: total_stars=${b.totalStars}, top_repos=${b.topReposList || 'N/A'}, top_languages=${b.topLanguages || 'N/A'}
 Activity: push_commits_30d=${b.commits30d}
 
 Write:
 1) Summary (max 80 words) with data-backed contrast.
-2) A vs B (3-6 bullets) with bold metric labels (e.g., **Total stars:** A X vs B Y).
-3) Suggestions (3-5 bullets) tailored for each, prefixed with A: or B:.
+2) @${a.username} vs @${b.username} (3-6 bullets) with bold metric labels (e.g., **Total stars:** @${a.username} X vs @${b.username} Y).
+3) Suggestions (3-5 bullets) tailored for each, prefixed with @${a.username}: or @${b.username}:.
 
 Rules:
 - No speculation; only use given data.
